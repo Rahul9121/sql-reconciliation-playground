@@ -324,3 +324,62 @@ tbody tr:hover { background: rgba(0, 240, 255, 0.06); }
   font-size: 0.9rem;
 }
 .foot p { margin: 0.25rem 0; }
+
+/* Welcome intro modal */
+.welcome-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: rgba(5, 6, 15, 0.78);
+  backdrop-filter: blur(6px);
+}
+.welcome-overlay[hidden] { display: none !important; }
+.welcome-modal {
+  width: min(560px, 100%);
+  max-height: min(90vh, 720px);
+  overflow: auto;
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1.35rem 1.4rem 1.25rem;
+  box-shadow:
+    0 0 0 1px rgba(0, 240, 255, 0.12),
+    0 24px 60px rgba(0, 0, 0, 0.55),
+    0 0 40px rgba(255, 43, 214, 0.08);
+}
+.welcome-eyebrow {
+  margin: 0 0 0.35rem;
+  color: var(--magenta);
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.welcome-modal h2 {
+  margin: 0 0 0.85rem;
+  font-size: clamp(1.15rem, 2.6vw, 1.45rem);
+  color: var(--text);
+  letter-spacing: -0.02em;
+}
+.welcome-body p {
+  margin: 0 0 0.75rem;
+  color: var(--muted);
+  line-height: 1.55;
+  font-size: 0.95rem;
+}
+.welcome-body p:last-child { margin-bottom: 0; }
+.welcome-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  margin-top: 1.15rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--border);
+}
+.welcome-actions .primary {
+  min-width: 10rem;
+}
+body.welcome-open { overflow: hidden; }

@@ -433,8 +433,52 @@ function wireEditor() {
   el.modeFree.addEventListener("click", () => setMode("free"));
 }
 
+function showWelcome() {
+  const overlay = document.getElementById("welcome-overlay");
+  const startBtn = document.getElementById("welcome-start");
+  if (!overlay || !startBtn) return;
+
+  const previouslyFocused = document.activeElement;
+
+  function onKeydown(e) {
+    if (overlay.hidden) return;
+    if (e.key === "Escape") {
+      e.preventDefault();
+      closeWelcome();
+    } else if (e.key === "Tab") {
+      e.preventDefault();
+      startBtn.focus();
+    }
+  }
+
+  function onOverlayClick(e) {
+    if (e.target === overlay) closeWelcome();
+  }
+
+  function closeWelcome() {
+    overlay.hidden = true;
+    document.body.classList.remove("welcome-open");
+    document.removeEventListener("keydown", onKeydown, true);
+    overlay.removeEventListener("click", onOverlayClick);
+    startBtn.removeEventListener("click", closeWelcome);
+    if (previouslyFocused && typeof previouslyFocused.focus === "function") {
+      previouslyFocused.focus();
+    } else {
+      el.editor.focus();
+    }
+  }
+
+  overlay.hidden = false;
+  document.body.classList.add("welcome-open");
+  startBtn.addEventListener("click", closeWelcome);
+  overlay.addEventListener("click", onOverlayClick);
+  document.addEventListener("keydown", onKeydown, true);
+  startBtn.focus();
+}
+
 async function main() {
   wireEditor();
+  showWelcome();
   el.run.disabled = true;
   try {
     await initDuckDB();

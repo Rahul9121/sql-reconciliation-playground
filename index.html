@@ -9,6 +9,23 @@
 </head>
 <body>
   <a class="skip-link" href="#editor">Skip to editor</a>
+
+  <div id="welcome-overlay" class="welcome-overlay" role="dialog" aria-modal="true" aria-labelledby="welcome-title" hidden>
+    <div class="welcome-modal" role="document">
+      <p class="welcome-eyebrow">Portfolio project · Rahul Ega</p>
+      <h2 id="welcome-title">Welcome to the SQL Reconciliation Playground</h2>
+      <div class="welcome-body">
+        <p>I built this so you can write and run real SQL in the browser against two deliberately messy systems: a trade blotter and a ledger.</p>
+        <p>There are twelve guided challenges covering anti-joins, full outer joins, duplicates, amount mismatches with a tolerance, sequence gaps, window functions, NULL handling, CTEs, and top-N per group. You can also switch to free-query mode and explore the schema on your own.</p>
+        <p>Everything runs on your device with DuckDB-WASM. Nothing is uploaded. The data is synthetic — not real or employer data.</p>
+        <p>Pick a challenge, write SQL, hit Run (<kbd>Ctrl</kbd>+<kbd>Enter</kbd>), then Check my answer. Hints and solutions are there if you want them.</p>
+      </div>
+      <div class="welcome-actions">
+        <button type="button" id="welcome-start" class="primary">Start exploring</button>
+      </div>
+    </div>
+  </div>
+
   <header class="top">
     <div class="brand">
       <p class="eyebrow">Portfolio project · Rahul Ega</p>
