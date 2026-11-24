@@ -1,0 +1,17 @@
+__pycache__/
+*.py[cod]
+.Python
+.venv/
+venv/
+.env
+.DS_Store
+.idea/
+.vscode/
+*.log
+.pytest_cache/
+.duckdb
+*.duckdb
+.warp/
+WARP.md
+node_modules/
+.cache/
